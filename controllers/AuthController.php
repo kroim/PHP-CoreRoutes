@@ -1,4 +1,5 @@
 <?php
+//session_start();
 include "./views/auth/login.php";
 
 class AuthController
@@ -14,7 +15,15 @@ class AuthController
 
     public function postLogin($request)
     {
-        echo "Login post";
+        $user = (object) array(
+            "name"=>"Wonder",
+            "email"=>"wonder@test.com",
+            "role"=>2,
+            "login_status"=>1
+        );
+        $_SESSION['user'] = serialize($user);
+        $_SESSION['login'] = 1;
+        echo "Login post".$_SESSION['user'];
     }
 
     public function getRegister()

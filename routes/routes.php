@@ -53,9 +53,13 @@ class Routes
     public function mainRoutes()
     {
         $this->route->get("/", function () {
-            $home = new Home();
+            $this->main->home();
         });
-        $this->route->get("/about", "About");
-        $this->route->get("/contact", "Contact");
+        $this->route->get("/about", function () {
+            $this->main->about();
+        });
+        $this->route->get("/contact", function () {
+            $this->main->contact();
+        });
     }
 }
